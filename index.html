@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Emiliano Leonel Bazan</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
+        /* COLORES DEFINIDOS SEGÚN LA IMAGEN */
+        :root {
+            --color-fondo-principal: #1c1c1c; 
+            --color-acento: #980000; 
+            --color-fondo-seccion: #2c2c2c; 
+            --color-texto-principal: #ffffff; 
+            --color-texto-secundario: #d3d3d3; 
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--color-fondo-principal);
+            color: var(--color-texto-principal); 
+            margin: 0;
+            padding: 0;
+        }
+
+        .cv-container {
+            max-width: 950px;
+            margin: 40px auto;
+            background-color: var(--color-fondo-principal); 
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        }
+
+        header {
+            display: flex; 
+            align-items: center;
+            background-color: var(--color-fondo-principal); 
+            padding: 30px 20px;
+            position: relative; 
+        }
+        
+        .header-info {
+            flex-grow: 1; 
+            padding-left: 20px;
+        }
+
+        .foto-perfil {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--color-acento); 
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 28px;
+            color: var(--color-texto-principal);
+        }
+
+        .titulo {
+            color: var(--color-acento); 
+            font-weight: bold;
+            font-size: 16px;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        
+        .contacto {
+            text-align: right;
+            margin-top: 0;
+            font-size: 14px;
+        }
+
+        .contacto i {
+            color: var(--color-acento); 
+            margin-right: 10px;
+        }
+
+        .contacto p {
+            margin: 5px 0; 
+            color: var(--color-texto-principal);
+        }
+
+        /* AJUSTES PARA LAS COLUMNAS Y CENTRADO DE LA COLUMNA DERECHA */
+        .contenido {
+            display: flex; 
+            flex-wrap: wrap; 
+        }
+
+        .col-izquierda {
+            width: 65%; /* Ocupa 65% del ancho */
+            padding: 20px; 
+            box-sizing: border-box;
+        }
+
+        .col-derecha {
+            width: 35%; /* Ocupa 35% del ancho */
+            padding: 20px; 
+            box-sizing: border-box;
+            /* Propiedades para centrar el contenido verticalmente */
+            display: flex; 
+            flex-direction: column;
+            align-items: center; /* Centra horizontalmente los elementos dentro de esta columna */
+            gap: 15px; /* Espacio entre las secciones de Idiomas, Competencias, Habilidades */
+        }
+        
+        /* Ajuste para que las secciones dentro de col-derecha no se estiren */
+        .col-derecha section {
+            width: 100%; /* Las secciones internas ocupan el 100% de la columna */
+            max-width: 250px; /* Limita el ancho de las secciones internas para un efecto centrado */
+            text-align: center; /* Centrar el texto dentro de estas secciones */
+        }
+
+        /* Override para h2 en col-derecha si quieres que también se centre */
+        .col-derecha h2 {
+            text-align: center;
+        }
+
+        /* Fin de ajustes de columnas */
+
+
+        h2 {
+            background-color: var(--color-fondo-seccion); 
+            color: var(--color-texto-principal); 
+            padding: 10px; 
+            font-size: 18px; 
+            border-radius: 4px;
+            text-transform: uppercase;
+            margin-top: 20px; 
+            margin-bottom: 15px;
+            text-align: center; 
+        }
+
+        .perfil p {
+            line-height: 1.5; 
+            text-align: justify;
+        }
+        
+        .experiencia .item, .formacion ul {
+            list-style: none; 
+            padding: 0;
+        }
+        
+        .item {
+             margin-bottom: 15px; 
+        }
+
+        .item h3 {
+            margin: 0;
+            font-size: 16px;
+            color: var(--color-acento); 
+            display: inline;
+        }
+        
+        .experiencia .item i, .formacion ul li i {
+            color: var(--color-acento); 
+            margin-right: 8px;
+        }
+        
+        .item p {
+            margin: 2px 0 0 0; 
+            font-size: 14px;
+            color: var(--color-texto-secundario); 
+            padding-left: 20px; 
+        }
+        
+        .item p strong {
+            font-weight: bold;
+            color: var(--color-texto-principal); 
+        }
+        
+        /* Ajustes para las listas de Idiomas y Habilidades */
+        .idiomas ul, .habilidades ul {
+            list-style: none;
+            padding: 0;
+            width: 100%; /* Asegura que la lista ocupe el ancho de su contenedor */
+            max-width: 200px; /* Limita el ancho de la lista de idiomas/habilidades para el centrado */
+            margin: 0 auto; /* Centra la lista dentro de su contenedor */
+        }
+        
+        .idiomas li {
+            margin-bottom: 8px; 
+            display: flex; /* Para alinear el icono y el texto */
+            align-items: center;
+            justify-content: flex-start; /* Alinea los elementos a la izquierda de la lista */
+        }
+
+        .idiomas li i {
+            color: var(--color-acento); 
+            margin-right: 10px;
+        }
+        
+        .competencias {
+            text-align: center;
+        }
+        
+        .competencias img, .competencias i {
+            width: 50px;
+            height: 50px; 
+            object-fit: contain;
+            margin: 10px 5px;
+            vertical-align: middle;
+        }
+        
+        .habilidades li {
+            display: flex;
+            justify-content: space-between; 
+            align-items: center;
+            margin-bottom: 8px; 
+            color: var(--color-texto-secundario);
+            width: 100%; /* Asegura que cada item de habilidad ocupe el 100% de su contenedor */
+        }
+        
+        .habilidades li i {
+            display: none; 
+        }
+
+        .puntos {
+            display: inline-block;
+            margin-left: 10px;
+        }
+
+        .puntos i {
+            color: var(--color-acento); 
+            margin-right: 3px;
+        }
+
+        @media (max-width: 800px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            .header-info {
+                padding-left: 0;
+            }
+            .contacto {
+                text-align: center;
+                margin-top: 15px;
+            }
+            .contenido {
+                flex-direction: column; 
+            }
+            .col-izquierda, .col-derecha {
+                width: 100%;
+                float: none;
+                margin-top: 0;
+                border: none;
+                align-items: stretch; /* Restaurar alineación normal en móvil */
+                gap: 0; /* Eliminar el gap en móvil si no es necesario */
+            }
+            /* Asegurarse de que las secciones internas ocupen el 100% y no estén limitadas en móvil */
+            .col-derecha section {
+                width: 100%; 
+                max-width: none; /* Quitar el max-width en móvil */
+                text-align: center; 
+            }
+            .idiomas ul, .habilidades ul {
+                max-width: none; /* Quitar el max-width en móvil */
+            }
+            .idiomas li, .habilidades li {
+                justify-content: center; /* Centrar los ítems de lista en móvil */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header>
+            <img src="foto.jpg" alt="Foto de Emiliano Bazan" class="foto-perfil">
+            <div class="header-info">
+                <h1>Emiliano Leonel Bazan</h1>
+                <p class="titulo">TÉCNICO DESARROLLADOR DE SOFTWARE</p>
+            </div>
+            <div class="contacto">
+                <p><i class="fa-solid fa-phone"></i> 11 6820-1777</p>
+                <p><i class="fa-solid fa-envelope"></i> emilianobazan18@gmail.com</p>
+                <p><i class="fa-solid fa-location-dot"></i> Villa del Rosario, Córdoba</p>
+            </div>
+        </header>
+
+        <div class="contenido">
+            <div class="col-izquierda">
+                <section class="perfil">
+                    <p>Hola, actualmente me encuentro finalizando mis estudios en el Instituto Superior de Villa del Rosario para obtener el título de Desarrollador de Software.</p>
+                    <p>Cuento con experiencia en tecnologías como HTML, CSS y JavaScript, y me apasiona el desarrollo de experiencias web atractivas y funcionales. Me caracterizo por tener una fuerte motivación hacia el aprendizaje continuo y la mejora constante, con el objetivo de seguir creciendo profesionalmente y aportar valor en proyectos innovadores y desafiantes.</p>
+                </section>
+
+                <section class="experiencia">
+                    <h2>Experiencia Laboral</h2>
+                    <div class="item">
+                        <h3><i class="fa-solid fa-check-square"></i> Color Living S.R.L</h3>
+                        <p><strong>03/2023 - Actualidad</strong></p>
+                        <p>Soy un auxiliar administrativo en Grupo COLOR, donde gestiono porcentajes, cajas diarias, control de stock y filtrado de datos con precisión y eficiencia.</p>
+                    </div>
+                    <div class="item">
+                        <h3><i class="fa-solid fa-check-square"></i> Proyectos en Excel</h3>
+                        <p>Lista de precios, muestrarios de mercadería, control de stock.</p>
+                    </div>
+                    <div class="item">
+                        <h3><i class="fa-solid fa-check-square"></i> Manejo de Redes</h3>
+                        <p>Estrategia de venta, comunicación con clientes y diseño de imágenes.</p>
+                    </div>
+                </section>
+
+                <section class="formacion">
+                    <h2>Formación Académica</h2>
+                    <ul>
+                        <li class="item">
+                            <h3><i class="fa-solid fa-check-square"></i> SECUNDARIO N°5 MONTE GRANDE – BSAS</h3>
+                            <p><strong>2012–2018</strong></p>
+                            <p>Comunicaciones</p>
+                        </li>
+                        <li class="item">
+                            <h3><i class="fa-solid fa-check-square"></i> INSTITUTO SUPERIOR VILLA DEL ROSARIO</h3>
+                            <p><strong>EN CURSO</strong></p>
+                            <p>Desarrollador de Software</p>
+                        </li>
+                        <li class="item">
+                            <h3><i class="fa-solid fa-check-square"></i> UDEMY</h3>
+                            <p><strong>EN CURSO</strong></p>
+                            <p>Desarrollo Web Completo (HTML5, CSS3, JS, AJAX, PHP, MySQL)</p>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+
+            <div class="col-derecha">
+                <section class="idiomas">
+                    <h2>Idiomas</h2>
+                    <ul>
+                        <li><i class="fa-solid fa-check-circle"></i> Español</li>
+                        <li><i class="fa-solid fa-check-circle"></i> Inglés Básico</li>
+                    </ul>
+                </section>
+
+                <section class="competencias">
+                    <h2>Competencias</h2>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL">
+                    <i class="fa-solid fa-database" style="font-size:50px;color:skyblue;margin:10px 5px;" aria-hidden="true" title="SQL Server"></i>
+                    <i class="fa-solid fa-file-excel" style="font-size:50px;color:#217346;margin:10px 5px;" aria-hidden="true" title="Excel"></i>
+                    <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva">
+                </section>
+
+                <section class="habilidades">
+                    <h2>Habilidades</h2>
+                    <ul>
+                        <li>
+                            Creatividad 
+                            <span class="puntos"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></span>
+                        </li>
+                        <li>
+                            Compañerismo 
+                            <span class="puntos"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></span>
+                        </li>
+                        <li>
+                            Comunicación 
+                            <span class="puntos"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></span>
+                        </li>
+                        <li>
+                            Ganas de aprender 
+                            <span class="puntos"><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i><i class="fa-solid fa-circle"></i></span>
+                        </li>
+                    </ul>
+                </section>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
